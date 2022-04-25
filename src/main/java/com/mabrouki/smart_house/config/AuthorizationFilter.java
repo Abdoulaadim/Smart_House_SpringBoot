@@ -30,7 +30,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         super(authManager);
     }
 
-   /* @Override
+    @Override
     protected void doFilterInternal(HttpServletRequest req,
                                     HttpServletResponse res,
                                     FilterChain chain) throws IOException, ServletException {
@@ -45,28 +45,8 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
         UsernamePasswordAuthenticationToken authentication = getAuthentication(req);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(req, res);
-    }*/
-
-    @Override
-    protected void doFilterInternal(HttpServletRequest req,
-                                    HttpServletResponse res,
-                                    FilterChain chain) throws IOException, ServletException {
-
-        if (((HttpServletRequest) req).getMethod().equals("OPTIONS")) {
-
-            HttpServletResponse response = (HttpServletResponse) res;
-            response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-            response.setHeader("Access-Control-Allow-Credentials", "true");
-            response.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-            response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, "
-                    + "X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-
-        } else {
-
-            chain.doFilter(req, res);
-
-        }
     }
+
 
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
