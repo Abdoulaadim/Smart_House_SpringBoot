@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, SecurityConstants.SIGN_UP_URL)
                 .permitAll()
                 .antMatchers("/swagger-ui.html", "/swagger-ui",
-                        "smarthousefrontend.herokuapp.com/**",
+                            "smarthousefrontend.herokuapp.com/**",
                         "/swagger-ui/index.html",
                         "/v2/api-docs",
                         "/configuration/ui",
